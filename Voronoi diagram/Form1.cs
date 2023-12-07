@@ -175,19 +175,19 @@ namespace Voronoi_diagram
 			{
 				mode = Mode.OUTPUT;
 				modeButton.BackColor = Color.FromArgb(131, 119, 209);
-				modeButton.Text = "output mode";
+				modeButton.Text = "output";
 			}
 			else if (mode == Mode.MANUAL)
 			{
 				mode = Mode.INPUT;
 				modeButton.BackColor = Color.FromArgb(142, 249, 243);
-				modeButton.Text = "input mode";
+				modeButton.Text = "input";
 			}
 			else if (mode == Mode.OUTPUT)
 			{
 				mode = Mode.MANUAL;
 				modeButton.BackColor = Color.FromArgb(94, 252, 141);
-				modeButton.Text = "manual mode";
+				modeButton.Text = "manual";
 				reset();
 				allNodes = new Point[100];
 			}
@@ -220,7 +220,6 @@ namespace Voronoi_diagram
 		private void DaC(Point[] nodes,bool step)
 		{
 			Point[] Lnodes, Rnodes;
-
 			if (nodes.Length > 3)
 			{
 				Lnodes = subArray(nodes, 0, nodes.Length / 2 - 1);
@@ -228,14 +227,12 @@ namespace Voronoi_diagram
 				DaC(Lnodes,false);
 				DaC(Rnodes,false);
 				merge(Lnodes, Rnodes,step);
-
 			}
 			else
 			{
 				drawVoronoiInThreePoint(nodes, voronoiPen[voronoiNum]);
 				voronoiNum++;
 			}
-
 		}
 
 		private void merge(Point[] LconvexHull, Point[] RconvexHull, bool step = false)
@@ -1192,7 +1189,13 @@ namespace Voronoi_diagram
 		
 		private void writeEdge()
 		{
-			Edge temp = new Edge(new Point(0, 0), new Point(0, 0), null, null); ;
+			Edge temp = new Edge(new Point(0, 0), new Point(0, 0), null, null);
+			for (int i = 0; i < edgeNum; i++)
+			{
+				edges[i].sort();
+			}
+
+
 			for (int i = edgeNum - 1; i > 0; i--)
 			{
 				for (int j = 0; j < i; j++)
@@ -1370,7 +1373,7 @@ namespace Voronoi_diagram
 			points[1] = temp;
 		}
 
-		private void sort()
+		public void sort()
 		{
 			Point temp;
 			if (points[0].X > points[1].X)

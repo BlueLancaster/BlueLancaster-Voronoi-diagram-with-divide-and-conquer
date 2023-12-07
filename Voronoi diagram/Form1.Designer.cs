@@ -77,7 +77,7 @@ namespace Voronoi_diagram
 			this.modeButton.Name = "modeButton";
 			this.modeButton.Size = new System.Drawing.Size(105, 29);
 			this.modeButton.TabIndex = 7;
-			this.modeButton.Text = "input mode";
+			this.modeButton.Text = "input";
 			this.modeButton.UseVisualStyleBackColor = false;
 			this.modeButton.Click += new System.EventHandler(this.modeButton_Click);
 			// 
