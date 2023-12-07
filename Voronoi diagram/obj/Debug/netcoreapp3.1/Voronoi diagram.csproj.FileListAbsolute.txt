@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.exe
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.deps.json
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.runtimeconfig.json
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.runtimeconfig.dev.json
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.dll
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\bin\Debug\netcoreapp3.1\Voronoi diagram.pdb
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi_diagram.Form1.resources
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.AssemblyInfo.cs
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.dll
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.pdb
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi diagram.genruntimeconfig.cache
+C:\Users\User\source\repos\Voronoi diagram\Voronoi diagram\obj\Debug\netcoreapp3.1\Voronoi_diagram.Properties.Resources.resources

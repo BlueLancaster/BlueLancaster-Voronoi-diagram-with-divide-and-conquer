@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2ShjXUQFNEl+1XY0Y71qNpfagA+uA4FA1JOEOFZLT//T68sSW1+zWgz2PAAP1Kt0qaq0QxywxljiZCv2CxvkVw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\Voronoi diagram\\Voronoi diagram\\Voronoi diagram.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+  ],
+  "logs": []
+}
