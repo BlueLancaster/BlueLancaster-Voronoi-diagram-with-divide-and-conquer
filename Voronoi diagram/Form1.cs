@@ -102,6 +102,7 @@ namespace Voronoi_diagram
 					DaC(allNodes, false);
 					writeEdge();
 					sw.Close();
+					allNodes = new Point[100];
 					break;
 				case Mode.OUTPUT:
 					drawFileOutput();
