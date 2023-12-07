@@ -91,6 +91,7 @@ namespace Voronoi_diagram
 					else
 					{
 						DaC(allNodes,false);
+						writeEdge();
 					}
 					sw.Close();
 					break;
@@ -99,6 +100,7 @@ namespace Voronoi_diagram
 					allNodes = subArray(allNodes, 0, nodeNum - 1);
 					allNodes = writePointAndLexicalSort(allNodes.Length, allNodes);
 					DaC(allNodes, false);
+					writeEdge();
 					sw.Close();
 					break;
 				case Mode.OUTPUT:
@@ -140,7 +142,6 @@ namespace Voronoi_diagram
 						{
 							DaC(allNodes, true);
 						}
-						sw.Close();
 						mergeOrNot = true;
 					}
 					else 
@@ -148,8 +149,9 @@ namespace Voronoi_diagram
 						g.Clear(Color.White);
 						drawVoronoiByNodeAndEdge(allNodes, subArray(edges, 0, edgeNum - 1));
 						mergeOrNot = false;
+						writeEdge();
+						sw.Close();
 					}
-					
 					break;
 			}
 
@@ -1037,7 +1039,7 @@ namespace Voronoi_diagram
 				}
 			}
 
-			writeEdge();
+			//writeEdge();
 
 
 		}
