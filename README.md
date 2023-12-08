@@ -52,9 +52,9 @@ E 335 286 600 205
 
 ### 功能規格與介面規格
 #### 基礎視窗模樣
-![image](https://hackmd.io/_uploads/H1tZk-J8p.png)
+![image](image/init_interface.png)
 #### 詳細功能和介面介紹
-![interface intro resize](https://hackmd.io/_uploads/SJzkXbk8p.png)
+![interface intro resize](image/detail_interface.png)
 整個視窗為固定大小
 * 畫布
 進行任何相關的圖形繪製，大小為600x600，左下角為0,0，往右為x的正向，往上為y的正向
@@ -79,28 +79,28 @@ E 335 286 600 205
 #### 實際執行情況
 * 讀取檔案
 點擊choose file選擇想要的txt檔讀入input區
-![image](https://hackmd.io/_uploads/SyAEcWyI6.png)
+![image](image/choosefile_interface.png)
 
 * input模式的一般執行
-![image](https://hackmd.io/_uploads/S1b0ob1UT.png)
+![image](image/run_interface.png)
 
 * input模式的步步執行
 此時左右的Voronoi diagram和convex hull分別都用不同顏色標示，合併後得convex hull則以塗色面積來表示，hyper plane也明確標示出來
-![image](https://hackmd.io/_uploads/S1m1h-k86.png)
+![image](image/step_interface.png)
 
 * output模式的執行
-![image](https://hackmd.io/_uploads/B1fC2Wy8p.png)
+![image](image/output_interface.png)
 
 * 當執行時，資料區的格式不小心不符合當前模式
 狀態會顯示error
-![image](https://hackmd.io/_uploads/H1A-6Wy8p.png)
+![image](image/error_interface.png)
 
 * manual模式
 此時可以直接在畫布上點出點的位置，資料區的資料不會影響執行。此模式只能進行一般執行
 **先點擊需要的點**
-![image](https://hackmd.io/_uploads/S1Gh1Gy8a.png)
+![image](image/manual1.png)
 **點擊run進行一般執行**
-![image](https://hackmd.io/_uploads/BJqhyG1IT.png)
+![image](image/manual2.png)
 
 * 輸出的檔案會放在與exe同資料夾下
 
@@ -116,7 +116,8 @@ E 335 286 600 205
 
 ## 軟體說明
 使用C#作為開發語言，並且使用windows .Net Core 3.1版本的framework([官方下載點](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-3.1.32-windows-x64-installer?cid=getdotnetcore))，並須安裝其相關套件才能執行本專案程式的exe檔案(exe檔並須有相關檔案(dll,json)在同一資料夾下才能執行，如下圖)
-![image](https://hackmd.io/_uploads/r1GWrM1U6.png)
+
+![image](image/software_des.png)
 
 
 ## 程式設計
@@ -124,11 +125,13 @@ E 335 286 600 205
 #### C#提供的資料結構
 Point: 包含兩個值X和Y，可以運用在向量或是座標點
 #### 自訂的資料結構(class)
-![image](https://hackmd.io/_uploads/HkVm9VyUa.png)
+![image](image/edge.png)
+
 Edge: 包含一個長度為2的Point陣列，表示線段兩端，以及額外兩個Point(n1&n2)，兩個額外的Point必要時(即這個實例為中垂線時)，儲存是哪使用兩點產生這個(中垂線)線段的。可以運用在一般線段或是Voronoi diagram的線段上
 
 ### Divide and conquer演算法流程
-![image](https://hackmd.io/_uploads/B1RDsVkIT.png)
+![image](image/dac.png)
+
 1. 檢查點的數量是否大於3，決定是否divide
 2. 是，則進行divide，並遞迴呼叫DaC()，完成後會進行merge
 3. 否，則直接進行含3點以下Voronoi diagram繪製，並分配一種顏色來繪製
@@ -146,7 +149,8 @@ step則是用來控制是否要畫到最後
 #### 三點可形成三角形
 首先得先得出外心，可透過如下公式計算，且只取整數部分進行繪製
 外心公式分別得出外心的x和y:
-![image](https://hackmd.io/_uploads/SkJ6Qdk86.png)
+![image](image/cir.png)
+
 得出外心後便能利用每兩點的向量之垂直向量延伸出Voronoi diagram的邊，但由於向量會有兩個方向，因此，這裡透過逆時針取向各兩點的向量來找垂直向量，這樣就能確保方向是由三角形往外
 
 ### divide
@@ -166,7 +170,8 @@ merge內可分為兩步驟:一是找上下切線，二是找出hyperplane
 而若要找下切線則只需要把步驟3和4的順逆時鐘方向對調即可得出不同的步驟5結論。
 
 實際範例如下:
-![image](https://hackmd.io/_uploads/S14XJNxUp.png)
+![image](image/tra.png)
+
 數字代表線的檢查順序
 
 此外，還需要確保如何知道線是否穿過convex?
@@ -182,7 +187,7 @@ result < 0 為順時針
 ```
 
 實際範例如下:
-![image](https://hackmd.io/_uploads/r1xT1NVlUa.png)
+![image](image/tra_ex.png)
 
 字母代表點
 假設為找上切線，根據先前描述的步驟，則此時要若要檢查射線AB是否有穿過右convex hull，則應比較從A到B的向量，以及從A到C的向量是否為逆時針旋轉?計算可得出，答案為是，代表AB穿過右convex hull。因此，根據先前描述的步驟，在右convex hull找下一點C來進行步驟3，檢查射線AC是否有穿過右convex hull，則應比較從A到C的向量，以及從A到D的向量是否為逆時針旋轉?計算可得出，答案為否，代表AC沒有穿過右convex hull，則進入步驟4...以此進行。
@@ -200,15 +205,18 @@ result < 0 為順時針
 hyperplane也使用了Edge的資料結構
 
 實際範例如下:
-![image](https://hackmd.io/_uploads/SJpeFrxLp.png)
+
+![image](image/hyperplane.png)
+
 假設重頭開始畫中間的hyperplane，由merge的convex hull結果，可看出AD為上切線，此時可以AD中垂線為第一部份的hyperplane並由很遠往下延伸，直到碰到了Voronoi diagram上的線段(即DF線段畫出的中垂線)，此時，透過Edge資料結構內的n1 n2可知，其為D和F構成的中垂線，跟當前hyperplane的n1 n2(為A和D)比較，發現都有D，則取不重複兩點(A和F)來建構下一段hyperplane，起點則為剛剛上一個hyperplane的交點以此進行，直到發現取的兩點為下切線的兩點(F和C)即可做完
 
 
 **這裡實作判斷線碰到的方法**，則是找交點，使用了找交點公式，由於公式是用於射線之間的找交點，因此還要確保交點是有在線段上的才行，讓hyperplane跟所有Voronoi diagram 上的線找交點，以先碰到的為準(通常是Y值最大的)。
 
 此外，**要做的另一件就是消線**，這裡在進行尋找hyperplane的下一交點，找到時便要順便進行消線，這裡透過旋轉的方向進行決定要消除哪段線，首先透過從本來的hyperplane和新找到的hyperplane的方向進行旋轉角度計算，若為逆時針，則要消根據原方向也位於逆時針方向的線，反之亦然。
-實際範例如下
-![image](https://hackmd.io/_uploads/rJU0AHxIp.png)
+實際範例如下:
+![image](image/hyperplane_dis_line.png)
+
 由H0延伸到，發現了H1交點，同時先尋找下一交點，找到了H2，此時，便可進行消線，由H0到H1的向量以及H1到H2的向量，利用向量角度方向公式，便可得知是往逆時針轉，因此需要消除位於逆時針的那側，這時再利用H0到H1的向量分別和H1到M和H1到N比較，可知H1到M是在逆時針方向，因此，針對撞到的線的Edge資料結構更改其端點，將M改成H1，這樣之後就只會畫N到H1，便能完成消線。
 
 ### Step by Step
@@ -223,33 +231,33 @@ hyperplane也使用了Edge的資料結構
 
 ### 執行環境
 #### 電腦硬體
-![image](https://hackmd.io/_uploads/BkB4SLeL6.png)
+![image](image/hardware_env.png)
 
 ### 3點內測試
-![image](https://hackmd.io/_uploads/rya_dUl8p.png)
-![image](https://hackmd.io/_uploads/HJeq_UxUT.png)
-![image](https://hackmd.io/_uploads/B1ThtUxIT.png)
-![image](https://hackmd.io/_uploads/Hy3CFLg8p.png)
-![image](https://hackmd.io/_uploads/S1s1cLl8T.png)
-![image](https://hackmd.io/_uploads/ryubcLxL6.png)
-![image](https://hackmd.io/_uploads/S18M5IgIp.png)
-![image](https://hackmd.io/_uploads/SyNmqUxU6.png)
-![image](https://hackmd.io/_uploads/ByZVq8lUT.png)
+![image](image/c1.png)
+![image](image/c2.png)
+![image](image/c3.png)
+![image](image/c4.png)
+![image](image/c5.png)
+![image](image/c6.png)
+![image](image/c7.png)
+![image](image/c8.png)
+![image](image/c9.png)
 
 ### 4~6點測試
-![image](https://hackmd.io/_uploads/HJ1HcIxIT.png)
-![image](https://hackmd.io/_uploads/ryjH9Ie86.png)
-![image](https://hackmd.io/_uploads/BywL9Ix86.png)
-![image](https://hackmd.io/_uploads/r1HPc8eU6.png)
-![image](https://hackmd.io/_uploads/SkG_9IeIa.png)
-![image](https://hackmd.io/_uploads/r1GY5IeLa.png)
-![image](https://hackmd.io/_uploads/rkt55IeIp.png)
-![image](https://hackmd.io/_uploads/r1SscLxUp.png)
-![image](https://hackmd.io/_uploads/B1X3cIeL6.png)
-![image](https://hackmd.io/_uploads/ByCwpUxI6.png)
-![image](https://hackmd.io/_uploads/rJyFpUeIp.png)
-![image](https://hackmd.io/_uploads/S1TKa8lIp.png)
-![image](https://hackmd.io/_uploads/H1tqaUlUT.png)
+![image](image/c10.png)
+![image](image/c11.png)
+![image](image/c12.png)
+![image](image/c13.png)
+![image](image/c14.png)
+![image](image/c15.png)
+![image](image/c16.png)
+![image](image/c17.png)
+![image](image/c18.png)
+![image](image/c19.png)
+![image](image/c20.png)
+![image](image/c21.png)
+![image](image/c22.png)
 
 
 ### 7點測試以上
